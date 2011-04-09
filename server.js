@@ -27,7 +27,6 @@ server = http.createServer(function(request , response){
 			response.write(data, "binary");
 			
 			
-			response.end("checking ");
 		});
 		
 	});
