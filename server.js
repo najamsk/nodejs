@@ -34,7 +34,7 @@ server = http.createServer(function(request , response){
 
 });
 
-server.listen(8090);
+server.listen(80);
 
 // socket.io, I choose you
 //var socket = io.listen(server);
