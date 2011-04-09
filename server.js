@@ -25,7 +25,7 @@ server = http.createServer(function(request , response){
 			
 			response.writeHead(200);
 			response.write(data, "binary");
-			//checking was removed from here
+			checking was removed from here
 			
 			
 		});
