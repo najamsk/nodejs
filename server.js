@@ -34,7 +34,7 @@ server = http.createServer(function(request , response){
 
 });
 
-server.listen(80, 64.30.137.124);
+server.listen(80, "64.30.137.124");
 
 // socket.io, I choose you
 //var socket = io.listen(server);
