@@ -25,7 +25,7 @@ server = http.createServer(function(request , response){
 			
 			response.writeHead(200);
 			response.write(data, "binary");
-			response.end("checking ");
+			response.end("");
 			//checking was removed from here
 			
 		});
