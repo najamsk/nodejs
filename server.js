@@ -43,11 +43,42 @@ process.openStdin().addListener("data", function(text){
 	socket.broadcast(text);
 });
 
+function login(username, client)
+{
+	var response = {"msgtype" : "login", 
+			"status" : "green", 
+			"username" : username
+			};
+	socket.broadcast(response);
+}
+
+function sendtoclients(msg, username)
+{
+	var response = {"msgtype": "chat", "post": msg, "username": username };
+	socket.broadcast(response); 
+}
+
+
 socket.on('connection', function(client){
 	//console.log(client); //working thing
 	client.on('message', function(msg){
 		console.log("msg =  " + msg + ",cid =" + client.sessionId);
-		socket.broadcast(msg);
+		switch(msg["msgtype"])
+		{
+		 case "login":
+		 login(msg["username"], client);
+		 break;		
+		
+		 case "chat":
+		 sendtoclients(msg["post"], msg["username"]);	
+		 break;
+		}
+		//if("login" == msg["msgtype"])
+		//{
+		//	login(msg["username"], client);
+		//}	
+		console.log(msg["msgtype"]);	
+		//socket.broadcast(msg);
 	});
 });
 
