@@ -27,8 +27,9 @@ jQuery(function($){
 	 	
 		$("#users").append("<li>"+user+"</li>");
 		$("#chat").animate({"height":"516"},500).find(".cols").removeClass("none");
-		$("#userW").find(".loginW").hide();	
-		$(".cuser").html("@"+user).removeClass("none");
+		$("#userW").find(".loginW").hide();
+	
+		$("#sendbar").find(".cuser").html("@"+user).end().removeClass("none");
 		
 	});
 });
@@ -54,7 +55,11 @@ socket.addEvent('message', function(data) {
 <input type="text" id="name" />
 <input type="submit" id="btnchat" />
 </p>
-<h2 class="cuser none"></h2>
+<div id="sendbar" class="none">
+	<h2 class="cuser none"></h2>
+	<textarea id="msgnow"></textarea>
+	<input id="btnsend" type="submit"/>
+</div>
 </div>
 <div id="chat" class="line">
 	<div id="msgs" class="unit size3of4 scroll none cols">
