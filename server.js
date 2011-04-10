@@ -43,6 +43,13 @@ process.openStdin().addListener("data", function(text){
 	socket.broadcast(text);
 });
 
+socket.on('connection', function(client){
+	//console.log(client); //working thing
+	client.on('message', function(msg){
+		console.log("msg =  " + msg + ",cid =" + client.sessionId);
+		socket.broadcast(msg);
+	});
+});
 
 /*socket.on('connection', function(client){
 
