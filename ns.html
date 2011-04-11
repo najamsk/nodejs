@@ -34,7 +34,6 @@ socket.addEvent('message', function(data) {
 	{
 		if(data["status"]=="green")
 		{
-		console.log("inside login if");
 		//$("#users").append("<li>"+data["username"]+"</li>");
 		$("#chat").animate({"height":"516"},500).find(".cols").removeClass("none");
 		$("#userW").find(".loginW").hide();
@@ -49,7 +48,6 @@ socket.addEvent('message', function(data) {
 	}
 	else if(data["msgtype"] === "chat")
 	{	
-		console.log("chat message");
 		NS.Chat.update(data["post"], data["username"]);
 				
 	}	

@@ -79,7 +79,8 @@ socket.on('connection', function(client){
 		//{
 		//	login(msg["username"], client);
 		//}	
-		console.log(msg["msgtype"]);	
+		
+		//console.log(msg["msgtype"]);	
 		//socket.broadcast(msg);
 	});
 });
