@@ -30,15 +30,22 @@ socket.connect();
 socket.addEvent('message', function(data) {
 	//console.log("msg from server" + data);
 	console.log(data);
-	if(data["msgtype"] == "login" && data["status"]=="green")
+	if(data["msgtype"] == "login" && data["status"] !== "red")
 	{
-		
+		if(data["status"]=="green")
+		{
 		console.log("inside login if");
-		$("#users").append("<li>"+data["username"]+"</li>");
+		//$("#users").append("<li>"+data["username"]+"</li>");
 		$("#chat").animate({"height":"516"},500).find(".cols").removeClass("none");
 		$("#userW").find(".loginW").hide();
-		$("#sendbar").find(".cuser").html("@"+data["username"]).end().removeClass("none");
+		$("#sendbar").find(".cuser").html("@"+data["username"]).removeClass("none");
 		NS.User = data["username"];
+		}
+		else if(data["status"]=="blue")
+		{
+			$("#users").append("<li>"+data["username"]+"</li>");
+			NS.Chat.update(data["username"]  + " joined us", "chatbot");
+		}
 	}
 	else if(data["msgtype"] === "chat")
 	{	
@@ -49,9 +56,6 @@ socket.addEvent('message', function(data) {
 	
 });
 
-
-
-//NS.Chat = {"update": function(msg){ jQuery("#msgs").append("<p>" + msgs + "</p>"); }};
 jQuery(function($){
 	$("#btnchat").click(function(){
 		var user = ($("#name").val().trim().length > 0) && $("#name").val().trim();

@@ -46,10 +46,12 @@ process.openStdin().addListener("data", function(text){
 function login(username, client)
 {
 	var response = {"msgtype" : "login", 
-			"status" : "green", 
+			"status" : "blue", 
 			"username" : username
 			};
 	socket.broadcast(response);
+	response.status = "green";
+	client.send(response);
 }
 
 function sendtoclients(msg, username)
