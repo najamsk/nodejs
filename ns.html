@@ -37,7 +37,7 @@ socket.addEvent('message', function(data) {
 		//$("#users").append("<li>"+data["username"]+"</li>");
 		$("#chat").animate({"height":"516"},500).find(".cols").removeClass("none");
 		$("#userW").find(".loginW").hide();
-		$("#sendbar").find(".cuser").html("@"+data["username"]).removeClass("none");
+		$("#sendbar").find(".cuser").html("@"+data["username"]).removeClass("none").end().removeClass("none");
 		NS.User = data["username"];
 		}
 		else if(data["status"]=="blue")
